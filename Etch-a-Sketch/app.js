@@ -13,13 +13,6 @@ squaresInput.addEventListener("change", (e) => {
   }
 });
 
-function getRandomColor() {
-  const r = Math.floor(Math.random() * 256);
-  const g = Math.floor(Math.random() * 256);
-  const b = Math.floor(Math.random() * 256);
-  return `rgb(${r}, ${g}, ${b})`;
-}
-
 function draw(size) {
   gridContainer.innerHTML = "";
   const totalSquare = size * size;
@@ -28,8 +21,16 @@ function draw(size) {
     square.classList.add("grid-item");
     square.style.width = `calc(100% / ${size}) `;
     square.style.height = `calc(100% / ${size}) `;
+    square.dataset.opacity = "0";
+
     square.addEventListener("mouseover", () => {
-      square.style.backgroundColor = getRandomColor();
+      let currentOpacity = parseFloat(square.dataset.opacity);
+
+      if (currentOpacity < 1) {
+        currentOpacity += 0.1;
+        square.dataset.opacity = currentOpacity;
+        square.style.backgroundColor = `rgba(0,0,0, ${currentOpacity})`;
+      }
     });
 
     fragment.appendChild(square);

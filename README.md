@@ -39,4 +39,5 @@ Welcome to my repository featuring foundational web development projects complet
 2. **Navigate into the directory:**
    ```cd git test```
 
-3.Open any project directory (Etch-a-Sketch, Rock-Paper-Scissor, or odin-recipes) and launch index.html in your browser.
+3. **Open any project directory **
+    (Etch-a-Sketch, Rock-Paper-Scissor, or odin-recipes) and launch index.html in your browser.

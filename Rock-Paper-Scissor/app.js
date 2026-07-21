@@ -17,9 +17,13 @@ function getHumanChoice() {
 function playGame() {
   let computerScore = 0;
   let humanScore = 0;
-  let computerChoice = getComputerChoice();
-  let humanChoice = getHumanChoice();
   function playRound(computerChoice, humanChoice) {
+    if (
+      humanChoice !== "rock" &&
+      humanChoice !== "paper" &&
+      humanChoice !== "scissors"
+    )
+      return "Please check the typo";
     if (
       (computerChoice == "rock" && humanChoice == "scissors") ||
       (computerChoice == "paper" && humanChoice == "rock") ||

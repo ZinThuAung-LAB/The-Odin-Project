@@ -9,3 +9,13 @@
   src: url("/Sign-Up-Form/fonts/Norse.otf") format("opentype");
   font-weight: bold;
 }
+
+.container {
+  display: flex;
+  flex-direction: row;
+}
+
+.side-bar {
+  flex: 1;
+  background: url(images/background.jpg);
+}

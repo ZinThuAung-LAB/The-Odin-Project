@@ -9,42 +9,66 @@
   <body>
     <div class="container">
       <div class="side-bar">
-        <div class="background"></div>
-        <div class="logo"></div>
+        <div class="logo">
+          <img src="/Sign-Up-Form/images/odin-logo.png" alt="logo" class="logo-image">
+          <span class="logo-text">ODIN</span>
+        </div>
+        <div class="credit">
+          Photo by <a href="https://unsplash.com/@haliewestphoto">Hailey West</a> on <a href="https://unsplash.com">Unsplash</a></p>
+        </div>
       </div>
-      <main>
-        <article class="description">
+      <div class="main-content">
+        <header class="header-text">
           <p>
             This is not a real online service! You know you need something like
             this in your life to help you realize your deepest dreams.
           </p>
-          <p>Sign up now to get started.</p>
-          <p>You know you want to.</p>
-        </article>
-        <form action="" method="get">
-          <label for="first-name" name="first-name">FIRST NAME</label>
-          <input type="text" name="first-name" id="first-name" />
+          <p>Sign up <em>now</em> to get started.</p>
+          <p class="cta-text">You <em>know</em> you want to.</p>
+        </header>
+        <main class="form-container">
+          <h2>Let's do this!</h2>
+          <form action="#" method="POST" id="signup-form">
+          <div class="form-row">
+            <div class="input-group">
+              <label for="first-name">FIRST NAME</label>
+              <input type="text" name="first-name" id="first-name" value="Thor" required/>
+            </div>
+            <div class="input-group">
+              <label for="last-name" name="last-name">LAST NAME</label>
+              <input type="text" name="last-name" id="last-name" value="Odinson" required />
+            </div>
+          </div>
 
-          <label for="last-name" name="last-name">LAST NAME</label>
-          <input type="text" name="last-name" id="last-name" />
+          <div class="form-row">
+            <div class="input-group">
+              <label for="email">EMAIL</label>
+              <input type="email" name="email" id="email" required/>
+            </div>
+            <div class="input-group">
+              <label for="phone">PHONE NUMBER</label>
+              <input type="tel" name="phone" id="phone" required/>
+            </div>
+          </div>
 
-          <label for="email" name="email">EMAIL</label>
-          <input type="email" name="email" id="email" />
-
-          <label for="ph-no" name="ph-no">PHONE NUMBER</label>
-          <input type="number" name="ph-no" id="ph-no" />
-
-          <label for="password" name="password">PASSWORD</label>
-          <input type="password" name="password" id="password" />
-
-          <label for="confirm-pass" name="confirm-pass">CONFIRM PASSWORD</label>
-          <input type="password" name="confirm-pass" id="confirm-pass" />
+          <div class="form-row">
+            <div class="input-group">
+              <label for="password">PASSWORD</label>
+              <input type="password" name="password" id="password"  class="error" required/>
+            </div>
+            <div class="input-group">
+              <label for="confirm-pass"">CONFIRM PASSWORD</label>
+              <input type="password" name="confirm-pass" id="confirm-pass" class="error" required />
+            </div>
+          </div>
         </form>
-        <footer>
-          <button class="submit" type="submit">Create Account</button>
-          <p>Already have an account? <a>Log in</a></p>
+        </main>
+        
+        <footer class="action-section">
+          <button class="btn" type="submit" form="signup-form">Create Account</button>
+          <p class="login-prompt">Already have an account? <a>Log in</a></p>
         </footer>
-      </main>
+      </div>
     </div>
   </body>
 </html>

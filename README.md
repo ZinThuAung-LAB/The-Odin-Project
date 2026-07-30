@@ -8,6 +8,7 @@ Welcome to my repository featuring foundational web development projects complet
 
 | Project | Description | Tech Stack | Live Demo |
 | :--- | :--- | :--- | :--- |
+| **Sign-up Form** | A modern, responsive sign-up form featuring a two-column desktop layout, custom form inputs, floating branding banner, and active focus/error styling. | HTML5, CSS3 (Flexbox), JS | [Live Preview](https://zinthuaung-lab.github.io/The-Odin-Project/Sign-Up-Form/) |
 | **Calculator** | A sleek, dark-mode web calculator featuring robust mathematical state management, custom scrollable display handling, and automatic scientific notation for extreme numbers. | HTML5, CSS3 (Grid), JS (ES6+) | [Live Preview](https://zinthuaung-lab.github.io/The-Odin-Project/Calculator/) |
 | **Etch-a-Sketch** | An interactive pixel-drawing grid application supporting dynamic grid sizing, progressive shading (opacity darkening), and custom color effects. | HTML5, CSS3 (Grid), JS (DOM) | [Live Preview](https://zinthuaung-lab.github.io/The-Odin-Project/Etch-a-Sketch/) |
 | **Rock-Paper-Scissors** | Classic Rock-Paper-Scissors game featuring an interactive graphical user interface, score tracking, and real-time round outcome displays. | HTML5, CSS3, JS (ES6+) | [Live Preview](https://zinthuaung-lab.github.io/The-Odin-Project/Rock-Paper-Scissor/) |
@@ -16,6 +17,11 @@ Welcome to my repository featuring foundational web development projects complet
 ---
 
 ## 🛠️ Key Features & Concepts Learned
+
+### 📝 Sign-up Form
+- **Flexbox & Split Layouts:** Implemented a side-by-side hero image sidebar and content area, optimized for desktop and responsive viewports.
+- **Form Controls & Styling:** Custom-styled form control states including input focus rings, active states, and error highlighting for mismatched fields.
+- **Overlay Design:** Built semi-transparent logo overlays over background images using CSS position absolute and background positioning techniques.
 
 ### 🧮 Calculator
 - **State & Logic Management:** Handles complex operation chaining, sequential operator inputs, input overwriting post-calculation, and edge cases like division by zero.
@@ -40,4 +46,4 @@ Welcome to my repository featuring foundational web development projects complet
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/ZinThuAung-LAB/git_test.git](https://github.com/ZinThuAung-LAB/git_test.git)
+   git clone [https://github.com/ZinThuAung-LAB/The-Odin-Project.git](https://github.com/ZinThuAung-LAB/The-Odin-Project.git)

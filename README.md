@@ -8,7 +8,7 @@ Welcome to my repository featuring foundational web development projects complet
 
 | Project | Description | Tech Stack | Live Demo |
 | :--- | :--- | :--- | :--- |
-| **Admin Dashboard** | A full-featured admin dashboard layout featuring a sidebar navigation, dynamic top header controls, a project grid card section, and sidebar widgets. | HTML5, CSS3 (Grid & Flexbox) | [Live Preview](https://zinthuaung-lab.github.io/The-Odin-Project/Admin Dashboard/) |
+| **Admin Dashboard** | A full-featured admin dashboard layout featuring a sidebar navigation, dynamic top header controls, a project grid card section, and sidebar widgets. | HTML5, CSS3 (Grid & Flexbox) | [Live Preview](https://zinthuaung-lab.github.io/The-Odin-Project/Admin%20Dashboard/) |
 | **Sign-up Form** | A modern, responsive sign-up form featuring a two-column desktop layout, custom form inputs, floating branding banner, and active focus/error styling. | HTML5, CSS3 (Flexbox), JS | [Live Preview](https://zinthuaung-lab.github.io/The-Odin-Project/Sign-Up-Form/) |
 | **Calculator** | A sleek, dark-mode web calculator featuring robust mathematical state management, custom scrollable display handling, and automatic scientific notation for extreme numbers. | HTML5, CSS3 (Grid), JS (ES6+) | [Live Preview](https://zinthuaung-lab.github.io/The-Odin-Project/Calculator/) |
 | **Etch-a-Sketch** | An interactive pixel-drawing grid application supporting dynamic grid sizing, progressive shading (opacity darkening), and custom color effects. | HTML5, CSS3 (Grid), JS (DOM) | [Live Preview](https://zinthuaung-lab.github.io/The-Odin-Project/Etch-a-Sketch/) |

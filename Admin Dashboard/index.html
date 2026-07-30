@@ -3,6 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css"
+    />
     <link rel="stylesheet" href="styles.css" />
     <title>Admin Dashboard</title>
   </head>
@@ -55,100 +66,182 @@
       <div class="article">
         <div class="main-grid">
           <div class="project-section">
-            <h2>Your Projects</h2>
+            <h2 class="title">Your Projects</h2>
             <div class="project-grid">
               <div class="card">
-                <h2>Super Cool Project</h2>
+                <h3>Super Cool Project</h3>
                 <p>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                   Reiciendis quia dignissimos ab tempore facere consequuntur
                   iste soluta! In vero, velit expedita reprehenderit ab sint
                   rerum ea ipsa, nesciunt delectus recusandae.
                 </p>
+                <div class="icons">
+                  <span class="mdi mdi-star-plus-outline icon"></span>
+                  <span class="mdi mdi-eye-plus-outline icon"></span>
+                  <span class="mdi mdi-share-variant-outline icon"></span>
+                </div>
               </div>
               <div class="card">
-                <h2>Super Cool Project</h2>
+                <h3>Less Cool Project</h3>
                 <p>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                   Reiciendis quia dignissimos ab tempore facere consequuntur
                   iste soluta! In vero, velit expedita reprehenderit ab sint
                   rerum ea ipsa, nesciunt delectus recusandae.
                 </p>
+                <div class="icons">
+                  <span class="mdi mdi-star-plus-outline icon"></span>
+                  <span class="mdi mdi-eye-plus-outline icon"></span>
+                  <span class="mdi mdi-share-variant-outline icon"></span>
+                </div>
               </div>
               <div class="card">
-                <h2>Super Cool Project</h2>
+                <h3>Impossible App</h3>
                 <p>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                   Reiciendis quia dignissimos ab tempore facere consequuntur
-                  iste soluta! In vero, velit expedita reprehenderit ab sint
-                  rerum ea ipsa, nesciunt delectus recusandae.
+                  iste soluta!
                 </p>
+                <div class="icons">
+                  <span class="mdi mdi-star-plus-outline icon"></span>
+                  <span class="mdi mdi-eye-plus-outline icon"></span>
+                  <span class="mdi mdi-share-variant-outline icon"></span>
+                </div>
               </div>
               <div class="card">
-                <h2>Super Cool Project</h2>
+                <h3>Easy Peasy App</h3>
                 <p>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                   Reiciendis quia dignissimos ab tempore facere consequuntur
                   iste soluta! In vero, velit expedita reprehenderit ab sint
                   rerum ea ipsa, nesciunt delectus recusandae.
                 </p>
+                <div class="icons">
+                  <span class="mdi mdi-star-plus-outline icon"></span>
+                  <span class="mdi mdi-eye-plus-outline icon"></span>
+                  <span class="mdi mdi-share-variant-outline icon"></span>
+                </div>
               </div>
               <div class="card">
-                <h2>Super Cool Project</h2>
+                <h3>Ad Blocker</h3>
                 <p>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                   Reiciendis quia dignissimos ab tempore facere consequuntur
                   iste soluta! In vero, velit expedita reprehenderit ab sint
                   rerum ea ipsa, nesciunt delectus recusandae.
                 </p>
+                <div class="icons">
+                  <span class="mdi mdi-star-plus-outline icon"></span>
+                  <span class="mdi mdi-eye-plus-outline icon"></span>
+                  <span class="mdi mdi-share-variant-outline icon"></span>
+                </div>
               </div>
               <div class="card">
-                <h2>Super Cool Project</h2>
+                <h3>Money Maker</h3>
                 <p>
                   Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                   Reiciendis quia dignissimos ab tempore facere consequuntur
                   iste soluta! In vero, velit expedita reprehenderit ab sint
                   rerum ea ipsa, nesciunt delectus recusandae.
                 </p>
+                <div class="icons">
+                  <span class="mdi mdi-star-plus-outline icon"></span>
+                  <span class="mdi mdi-eye-plus-outline icon"></span>
+                  <span class="mdi mdi-share-variant-outline icon"></span>
+                </div>
               </div>
             </div>
           </div>
-
-          <div class="announcement-grid">
-            <div class="announcement-section">
-              <h2>Announcements</h2>
-              <div class="card">
-                <h3>Site Maintenance</h3>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur,Lorem ipsum dolor sit
-                  amet consectetur, Lorem ipsum dolor sit amet consectetur,
-                </p>
-                <h3>Community Share Day</h3>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur,Lorem ipsum dolor sit
-                  amet consectetur, Lorem ipsum dolor sit amet consectetur,
-                </p>
-                <h3>Updated Privacy Policy</h3>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur,Lorem ipsum dolor sit
-                  amet consectetur, Lorem ipsum dolor sit amet consectetur,
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="trending-grid">
-            <div class="trending-section">
-                <h2>Trendings</h2>
+          <div class="sidebar-right">
+            <div class="announcement-grid">
+              <div class="announcement-section">
+                <h2 class="title">Announcements</h2>
                 <div class="card">
-              <p>World Peace Builder</p>
-              <p>Super Cool Project</p>
-              <p>Life Changing App</p>
-              <p>No traffic maker</p>
+                  <div class="announce">
+                    <h3>Site Maintenance</h3>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur,Lorem ipsum dolor
+                      sit amet consectetur, Lorem ipsum dolor sit amet
+                      consectetur,
+                    </p>
+                  </div>
+                  <div class="announce">
+                    <h3>Community Share Day</h3>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur,Lorem ipsum dolor
+                      sit amet consectetur, Lorem ipsum dolor sit amet
+                      consectetur,
+                    </p>
+                  </div>
+                  <div class="announce">
+                    <h3>Updated Privacy Policy</h3>
+                    <p>
+                      Lorem ipsum dolor sit amet consectetur,Lorem ipsum dolor
+                      sit amet consectetur, Lorem ipsum dolor sit amet
+                      consectetur,
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
+            <div class="trending-grid">
+              <div class="trending-section">
+                <h2 class="title">Trendings</h2>
+                <div class="card">
+                  <div class="trending-item">
+                    <img
+                      src="https://api.dicebear.com/7.x/shapes/svg?seed=tegan&backgroundColor=ffd5dc"
+                      alt="@tegan avatar"
+                      class="avatar"
+                    />
+                    <div class="trending-info">
+                      <p class="handle">@tegan</p>
+                      <p class="project-title">World Peace Builder</p>
+                    </div>
+                  </div>
+
+                  <div class="trending-item">
+                    <img
+                      src="https://api.dicebear.com/7.x/bottts-neutral/svg?seed=morgan&backgroundColor=ffd166"
+                      alt="@morgan avatar"
+                      class="avatar"
+                    />
+                    <div class="trending-info">
+                      <p class="handle">@morgan</p>
+                      <p class="project-title">Super Cool Project</p>
+                    </div>
+                  </div>
+
+                  <div class="trending-item">
+                    <img
+                      src="https://api.dicebear.com/7.x/bottts-neutral/svg?seed=kendall&backgroundColor=f4a261"
+                      alt="@kendall avatar"
+                      class="avatar"
+                    />
+                    <div class="trending-info">
+                      <p class="handle">@kendall</p>
+                      <p class="project-title">Life Changing App</p>
+                    </div>
+                  </div>
+
+                  <div class="trending-item">
+                    <img
+                      src="https://api.dicebear.com/7.x/bottts-neutral/svg?seed=alex&backgroundColor=e76f51"
+                      alt="@alex avatar"
+                      class="avatar"
+                    />
+                    <div class="trending-info">
+                      <p class="handle">@alex</p>
+                      <p class="project-title">No Traffic Maker</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-        
           </div>
         </div>
       </div>
+    </div>
   </body>
 </html>

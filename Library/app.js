@@ -54,13 +54,18 @@ function displayBookToLibrary() {
         <p class="author">${book.author}</p>
         <p class="pages">${book.pages}</p>
         <button class="status-btn ${book.isRead ? "read" : "unread"}" onClick="toggleButton(${index})">${book.isRead ? "Read" : "Not Read Yet"}</button>
-        <button class="delete-btn">Delete</button>`;
+        <button class="delete-btn" onClick="deleteButton(${index})">Delete</button>`;
     bookGrid.appendChild(card);
   });
 }
 
 function toggleButton(index) {
   myLibrary[index].toggleStatus();
+  displayBookToLibrary();
+}
+
+function deleteButton(index) {
+  myLibrary.splice(index, 1);
   displayBookToLibrary();
 }
 

@@ -70,3 +70,47 @@ function deleteButton(index) {
 }
 
 displayBookToLibrary();
+
+// --- Modal Elements ---
+const modalOverlay = document.getElementById("modal-overlay");
+const openModalBtn = document.getElementById("add-book-btn");
+const closeModalBtn = document.getElementById("close-modal-btn");
+const addBookForm = document.getElementById("add-book-form");
+
+// Open Modal
+openModalBtn.addEventListener("click", () => {
+  modalOverlay.classList.add("active");
+});
+
+// Close Modal Function
+function closeModal() {
+  modalOverlay.classList.remove("active");
+  addBookForm.reset(); // Clear inputs
+}
+
+// Close on 'X' button click
+closeModalBtn.addEventListener("click", closeModal);
+
+// Close on clicking outside the modal box
+modalOverlay.addEventListener("click", (e) => {
+  if (e.target === modalOverlay) closeModal();
+});
+
+// --- Form Submission ---
+addBookForm.addEventListener("submit", (e) => {
+  e.preventDefault(); // Prevent page refresh
+
+  // Get form input values
+  const title = document.getElementById("title").value;
+  const author = document.getElementById("author").value;
+  const pages = document.getElementById("pages").value;
+  const isRead = document.getElementById("is-read").checked;
+
+  // Create new book and add to library
+  const newBook = new Book(title, author, pages, isRead);
+  addBookToLibrary(newBook);
+
+  displayBookToLibrary();
+  // Close modal and refresh screen
+  closeModal();
+});

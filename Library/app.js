@@ -1,9 +1,67 @@
-function book(title, author, pages, read) {
+let myLibrary = [
+  new Book("The Hobbit", "J.R.R. Tolkien", 295, false),
+  new Book("Harry Potter", "J.K. Rowling", 454, true),
+  new Book("The Test", "Tester", 2, true),
+  new Book("New Book", "Zack", 192, false),
+];
+
+function Book(title, author, pages, read) {
+  if (!new.target) {
+    throw Error(
+      "You must use the 'new' operator to call the constructor and This is test",
+    );
+  }
+  this.id = crypto.randomUUID();
   this.title = title;
   this.author = author;
   this.pages = pages;
-  this.read = read;
-  this.info = function () {
-    console.log(book.info());
+  this.isRead = read;
+
+  this.toggleStatus = function () {
+    this.isRead = !this.isRead;
   };
 }
+
+// const theHobbit = new Book(
+//   "The Hobbit",
+//   "J.R.R Tolkein",
+//   "295 pages",
+//   "not read yet",
+// );
+
+// const theHarryPotter = new Book(
+//   "Harry Potter",
+//   "J.K.Rowling",
+//   "454 pages",
+//   "read",
+// );
+
+// const theTest = new Book("The Test", "Tester", "2 pages", "read");
+
+function addBookToLibrary(book) {
+  myLibrary.push(book);
+}
+
+function displayBookToLibrary() {
+  const bookGrid = document.querySelector(".books-grid");
+  bookGrid.innerHTML = "";
+  myLibrary.forEach((book, index) => {
+    const card = document.createElement("div");
+    card.classList.add("card");
+
+    card.innerHTML = ` 
+        <h3 class="title">${book.title}</h3>
+        <p class="author">${book.author}</p>
+        <p class="pages">${book.pages}</p>
+        <button class="status-btn ${book.isRead ? "read" : "unread"}" onClick="toggleButton(${index})">${book.isRead ? "Read" : "Not Read Yet"}</button>
+        <button class="delete-btn">Delete</button>`;
+    bookGrid.appendChild(card);
+  });
+}
+
+function toggleButton(index) {
+  myLibrary[index].toggleStatus();
+  displayBookToLibrary();
+}
+
+displayBookToLibrary();

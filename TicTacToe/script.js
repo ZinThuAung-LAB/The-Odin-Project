@@ -21,7 +21,10 @@ const createPlayer = (name, mark) => {
 };
 
 const GameController = (() => {
-  const players = [createPlayer("Player1", "X"), createPlayer("Player2", "O")];
+  const players = [
+    createPlayer("Player 1", "X"),
+    createPlayer("Player 2", "O"),
+  ];
 
   let activePlayerIndex = 0;
   let isGameOver = false;
@@ -38,6 +41,7 @@ const GameController = (() => {
   ];
 
   const getCurrentPlayer = () => players[activePlayerIndex];
+  const getIsGameOver = () => isGameOver;
 
   const switchTurn = () => {
     activePlayerIndex = activePlayerIndex === 0 ? 1 : 0;
@@ -45,15 +49,14 @@ const GameController = (() => {
 
   const playRound = (index) => {
     if (isGameOver) {
-      console.log("Game is over! Restart to play again.");
-      return;
+      return "Game is over! Restart to play again.";
     }
 
     const success = GameBoard.placeMark(index, getCurrentPlayer().mark);
     if (!success) {
-      console.log("Slot already taken! Pick another one.");
-      return;
+      return "Slot already taken! Pick another one.";
     }
+
     const board = GameBoard.getBoard();
 
     const hasWon = winningCombinations.some((combo) =>
@@ -62,18 +65,74 @@ const GameController = (() => {
 
     if (hasWon) {
       isGameOver = true;
-      console.log(`${getCurrentPlayer.name} Wins!`);
-      return;
+      return `${getCurrentPlayer().name} Wins!`;
     }
 
     if (board.every((cell) => cell !== "")) {
       isGameOver = true;
-      console.log("It's a tie");
-      return;
+      return "It's a tie!";
     }
 
     switchTurn();
-    console.log(`It's now ${getCurrentPlayer().name}'s turn.`);
+    return `${getCurrentPlayer().name}'s turn (${getCurrentPlayer().mark})`;
   };
-  return { playRound, getCurrentPlayer };
+
+  const resetGame = () => {
+    activePlayerIndex = 0;
+    isGameOver = false;
+    GameBoard.resetBoard();
+  };
+
+  return { playRound, getCurrentPlayer, getIsGameOver, resetGame };
 })();
+
+const DisplayController = (() => {
+  const boardElement = document.getElementById("gameboard");
+  const messageElement = document.getElementById("message");
+  const restartBtn = document.getElementById("restart-btn");
+
+  const setMessage = (msg) => {
+    messageElement.textContent = msg;
+  };
+
+  const renderBoard = () => {
+    boardElement.innerHTML = "";
+    const board = GameBoard.getBoard();
+
+    board.forEach((cellValue, index) => {
+      const square = document.createElement("button");
+      square.classList.add("square");
+      square.textContent = cellValue;
+
+      square.addEventListener("click", () => {
+        // Send move to GameController and directly update UI message with returned string
+        const resultMessage = GameController.playRound(index);
+        setMessage(resultMessage);
+
+        // Refresh grid display
+        renderBoard();
+      });
+
+      boardElement.appendChild(square);
+    });
+  };
+
+  restartBtn.addEventListener("click", () => {
+    GameController.resetGame();
+    renderBoard();
+    setMessage(
+      `${GameController.getCurrentPlayer().name}'s turn (${GameController.getCurrentPlayer().mark})`,
+    );
+  });
+
+  const init = () => {
+    renderBoard();
+    setMessage(
+      `${GameController.getCurrentPlayer().name}'s turn (${GameController.getCurrentPlayer().mark})`,
+    );
+  };
+
+  return { init };
+})();
+
+DisplayController.init();

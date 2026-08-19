@@ -5,22 +5,35 @@ let myLibrary = [
   new Book("New Book", "Zack", 192, false),
 ];
 
-function Book(title, author, pages, read) {
-  if (!new.target) {
-    throw Error(
-      "You must use the 'new' operator to call the constructor and This is test",
-    );
+class Book {
+  constructor(title, author, pages, read = false) {
+    this.id = crypto.randomUUID();
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.isRead = read;
   }
-  this.id = crypto.randomUUID();
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.isRead = read;
-
-  this.toggleStatus = function () {
+  toggleStatus() {
     this.isRead = !this.isRead;
-  };
+  }
 }
+
+// function Book(title, author, pages, read) {
+//   if (!new.target) {
+//     throw Error(
+//       "You must use the 'new' operator to call the constructor and This is test",
+//     );
+//   }x1
+//   this.id = crypto.randomUUID();
+//   this.title = title;
+//   this.author = author;
+//   this.pages = pages;
+//   this.isRead = read;
+
+//   this.toggleStatus = function () {
+//     this.isRead = !this.isRead;
+//   };
+// }
 
 // const theHobbit = new Book(
 //   "The Hobbit",

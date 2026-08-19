@@ -16,6 +16,7 @@ let myLibrary = [
   new Book("Harry Potter", "J.K. Rowling", 454, true),
   new Book("The Test", "Tester", 2, true),
   new Book("New Book", "Zack", 192, false),
+  new Book("Bug", "Zack", 1, true),
 ];
 
 // function Book(title, author, pages, read) {

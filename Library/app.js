@@ -1,10 +1,3 @@
-let myLibrary = [
-  new Book("The Hobbit", "J.R.R. Tolkien", 295, false),
-  new Book("Harry Potter", "J.K. Rowling", 454, true),
-  new Book("The Test", "Tester", 2, true),
-  new Book("New Book", "Zack", 192, false),
-];
-
 class Book {
   constructor(title, author, pages, read = false) {
     this.id = crypto.randomUUID();
@@ -17,6 +10,13 @@ class Book {
     this.isRead = !this.isRead;
   }
 }
+
+let myLibrary = [
+  new Book("The Hobbit", "J.R.R. Tolkien", 295, false),
+  new Book("Harry Potter", "J.K. Rowling", 454, true),
+  new Book("The Test", "Tester", 2, true),
+  new Book("New Book", "Zack", 192, false),
+];
 
 // function Book(title, author, pages, read) {
 //   if (!new.target) {

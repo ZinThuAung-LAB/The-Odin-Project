@@ -1,21 +1,20 @@
-import path from "node:path";
-import HtmlWebpackPlugin from "html-webpack-plugin";
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-export default {
-  mode: "development",
+module.exports = {
+  mode: "production",
   entry: "./src/index.js",
   output: {
     filename: "main.js",
-    path: path.resolve(import.meta.dirname, "dist"),
-    clean: true,
+    path: path.resolve(__dirname, "./"), // Output to current folder root
+    publicPath: "./", // Relative paths for GitHub Pages
+    clean: false, // Keep source files safe!
   },
-  devtool: "eval-source-map",
-  devServer: {
-    watchFiles: ["./src/template.html"],
-  },
+  devtool: "source-map",
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/template.html",
+      filename: "index.html", // Generates index.html at root
     }),
   ],
   module: {
@@ -25,12 +24,12 @@ export default {
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.html$/i,
-        use: ["html-loader"],
-      },
-      {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: "asset/resource",
+      },
+      {
+        test: /\.html$/i,
+        loader: "html-loader",
       },
     ],
   },

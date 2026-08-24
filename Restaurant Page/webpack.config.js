@@ -2,7 +2,6 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 
-// Recreate __dirname equivalent for ES Modules
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -11,15 +10,15 @@ export default {
   entry: "./src/index.js",
   output: {
     filename: "main.js",
-    path: path.resolve(__dirname, "./"), // Outputs directly to current folder root
-    publicPath: "./", // Ensures relative paths work on GitHub Pages
-    clean: false, // Kept false to protect source files
+    path: path.resolve(__dirname, "./"), // Outputs to Restaurant Page folder, not root!
+    publicPath: "./",
+    clean: false,
   },
   devtool: "source-map",
   plugins: [
     new HtmlWebpackPlugin({
       template: "./src/template.html",
-      filename: "index.html", // Generates index.html at root
+      filename: "index.html",
     }),
   ],
   module: {

@@ -1,14 +1,19 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
+import path from "node:path";
+import { fileURLToPath } from "node:url";
+import HtmlWebpackPlugin from "html-webpack-plugin";
 
-module.exports = {
+// Recreate __dirname equivalent for ES Modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export default {
   mode: "production",
   entry: "./src/index.js",
   output: {
     filename: "main.js",
-    path: path.resolve(__dirname, "./"), // Output to current folder root
-    publicPath: "./", // Relative paths for GitHub Pages
-    clean: false, // Keep source files safe!
+    path: path.resolve(__dirname, "./"), // Outputs directly to current folder root
+    publicPath: "./", // Ensures relative paths work on GitHub Pages
+    clean: false, // Kept false to protect source files
   },
   devtool: "source-map",
   plugins: [

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Odin Project Portfolio | ZinThuAung-LAB</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    body {
+      background-color: #0f172a;
+      color: #f8fafc;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+    h1 {
+      font-size: 2.5rem;
+      color: #38bdf8;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      color: #94a3b8;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      width: 100%;
+      max-width: 1000px;
+    }
+    .card {
+      background: #1e293b;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: transform 0.2s, border-color 0.2s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: #38bdf8;
+    }
+    .card h2 {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: #f1f5f9;
+    }
+    .card p {
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>The Odin Project Showcase</h1>
+    <p>Collection of Web Development Projects by ZinThuAung-LAB</p>
+  </header>
+
+  <main class="grid">
+    <a href="./Admin Dashboard/index.html" class="card">
+      <h2>Admin Dashboard</h2>
+      <p>Grid and Flexbox dashboard layout project.</p>
+    </a>
+
+    <a href="./Calculator/index.html" class="card">
+      <h2>Calculator</h2>
+      <p>Interactive web-based calculator built with JavaScript.</p>
+    </a>
+
+    <a href="./Etch-a-Sketch/index.html" class="card">
+      <h2>Etch-a-Sketch</h2>
+      <p>Browser drawing pad using DOM manipulation.</p>
+    </a>
+
+    <a href="./Library/index.html" class="card">
+      <h2>Library</h2>
+      <p>Book tracking app using JavaScript Objects and Classes.</p>
+    </a>
+
+    <a href="./Restaurant Page/dist/index.html" class="card">
+      <h2>Restaurant Page</h2>
+      <p>Dynamic tabbed interface generated using Webpack & ES6 Modules.</p>
+    </a>
+
+    <a href="./Rock-Paper-Scissor/index.html" class="card">
+      <h2>Rock Paper Scissors</h2>
+      <p>Classic game with a dynamic UI interface.</p>
+    </a>
+
+    <a href="./Sign-Up-Form/index.html" class="card">
+      <h2>Sign-Up Form</h2>
+      <p>Form design featuring HTML5 and custom JavaScript validation.</p>
+    </a>
+
+    <a href="./TicTacToe/index.html" class="card">
+      <h2>Tic-Tac-Toe</h2>
+      <p>Playable grid game utilizing Factory Functions & Module Pattern.</p>
+    </a>
+  </main>
+
+</body>
+</html>

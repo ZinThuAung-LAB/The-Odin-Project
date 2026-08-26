@@ -1,41 +1,46 @@
 /* ==========================================================================
-   1. CORE CONSTANTS & THEME VARIABLES
+   CUSTOM WORKSPACE - TEAL & EMERALD MODERN THEME
    ========================================================================== */
+
 :root {
-  /* Color Palette - Vibrant Indigo & Slate Aesthetic */
-  --bg-primary: #0f172a;
-  --bg-secondary: #1e293b;
-  --bg-card: rgba(30, 41, 59, 0.7);
-  --bg-card-hover: rgba(51, 65, 85, 0.8);
+  /* Surface Colors */
+  --bg-app: #f8fafc;
+  --bg-sidebar: #ebf1f5;
+  --bg-card: #ffffff;
+  --bg-badge: #f1f5f9;
 
-  --accent-primary: #6366f1;
-  --accent-primary-hover: #4f46e5;
-  --accent-glow: rgba(99, 102, 241, 0.25);
+  /* Text Spectrum */
+  --text-primary: #0f172a;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
 
-  --text-main: #f8fafc;
-  --text-muted: #94a3b8;
-  --text-inverse: #0f172a;
+  /* Brand & Active Accents (Teal & Emerald) */
+  --accent-teal: #0d9488;
+  --accent-teal-soft: #ccfbf1;
+  --accent-emerald: #10b981;
+  --accent-emerald-hover: #059669;
 
-  --border-light: rgba(255, 255, 255, 0.1);
-  --border-focus: rgba(99, 102, 241, 0.5);
+  --border-light: #e2e8f0;
 
-  /* Priority Accent Colors */
-  --priority-high: #ef4444;
-  --priority-medium: #f59e0b;
-  --priority-low: #10b981;
+  /* Priority Accent Markers */
+  --priority-high: #f43f5e; /* Rose Red */
+  --priority-medium: #f59e0b; /* Amber */
+  --priority-low: #10b981; /* Emerald */
 
   /* UI Dimensions & Shadows */
-  --sidebar-width: 280px;
-  --radius-lg: 16px;
-  --radius-md: 10px;
-  --radius-sm: 6px;
-  --shadow-lg:
-    0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
-  --shadow-glow: 0 0 20px var(--accent-glow);
-  --transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --radius-xl: 16px;
+  --radius-lg: 12px;
+  --radius-md: 8px;
+  --radius-full: 9999px;
+
+  --shadow-card:
+    0 1px 3px rgba(15, 23, 42, 0.05), 0 1px 2px rgba(15, 23, 42, 0.03);
+  --shadow-hover:
+    0 10px 15px -3px rgba(13, 148, 136, 0.08),
+    0 4px 6px -4px rgba(0, 0, 0, 0.03);
+  --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Base Reset */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -51,50 +56,46 @@
 }
 
 body {
-  background-color: var(--bg-primary);
-  background-image:
-    radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, rgba(16, 185, 129, 0.1) 0px, transparent 50%);
-  color: var(--text-main);
+  background-color: var(--bg-app);
+  color: var(--text-primary);
   min-height: 100vh;
   display: flex;
-  overflow-x: hidden;
 }
 
-/* ==========================================================================
-   2. APP LAYOUT & SIDEBAR
-   ========================================================================== */
 #app {
   display: flex;
   width: 100vw;
   min-height: 100vh;
 }
 
-/* Sidebar Navigation */
+/* ==========================================================================
+   SIDEBAR NAVIGATION
+   ========================================================================== */
 .sidebar {
-  width: var(--sidebar-width);
-  background: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(12px);
+  width: 260px;
+  background-color: var(--bg-sidebar);
   border-right: 1px solid var(--border-light);
   padding: 2rem 1.25rem;
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  flex-shrink: 0;
 }
 
 .sidebar h2 {
-  font-size: 0.85rem;
+  font-size: 0.75rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--text-muted);
-  margin-bottom: 0.5rem;
+  padding-left: 0.5rem;
 }
 
 #projects-list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.35rem;
   flex-grow: 1;
 }
 
@@ -102,77 +103,71 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.75rem 1rem;
-  border-radius: var(--radius-md);
-  color: var(--text-muted);
+  padding: 0.65rem 0.9rem;
+  border-radius: var(--radius-lg);
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  font-weight: 500;
   cursor: pointer;
-  transition: var(--transition-fast);
-  border: 1px solid transparent;
+  transition: var(--transition);
 }
 
 #projects-list li:hover {
-  background: var(--bg-card-hover);
-  color: var(--text-main);
+  background-color: rgba(255, 255, 255, 0.7);
+  color: var(--text-primary);
 }
 
+/* Custom Teal Active State */
 #projects-list li.active {
-  background: rgba(99, 102, 241, 0.15);
-  color: #a5b4fc;
-  border-color: rgba(99, 102, 241, 0.3);
-  font-weight: 600;
+  background-color: var(--accent-teal-soft);
+  color: var(--accent-teal);
+  font-weight: 700;
 }
 
 .delete-project-btn {
   background: transparent;
   border: none;
   color: var(--text-muted);
-  opacity: 0.6;
   font-size: 0.9rem;
   cursor: pointer;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
+  border-radius: var(--radius-full);
+  width: 22px;
+  height: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: var(--transition-fast);
+  transition: var(--transition);
 }
 
 .delete-project-btn:hover {
   color: var(--priority-high);
-  background: rgba(239, 68, 68, 0.15);
-  opacity: 1;
-}
-
-/* Button UI */
-button {
-  cursor: pointer;
-  border: none;
-  border-radius: var(--radius-md);
-  font-weight: 600;
-  transition: var(--transition-fast);
+  background-color: #ffe4e6;
 }
 
 #add-project-btn {
   width: 100%;
-  padding: 0.75rem;
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--text-main);
-  border: 1px dashed var(--border-light);
+  padding: 0.7rem;
+  background-color: #ffffff;
+  color: var(--text-secondary);
+  border: 1px dashed var(--accent-teal);
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
 }
 
 #add-project-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: var(--text-muted);
+  background-color: var(--accent-teal-soft);
+  color: var(--accent-teal);
 }
 
 /* ==========================================================================
-   3. MAIN CONTENT CONTAINER
+   MAIN DASHBOARD
    ========================================================================== */
 .todo-container {
   flex-grow: 1;
   padding: 3rem 4rem;
-  max-width: 1100px;
+  max-width: 950px;
   margin: 0 auto;
 }
 
@@ -180,62 +175,73 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--border-light);
+  margin-bottom: 2.25rem;
 }
 
 .project-header h1 {
   font-size: 2.25rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
+.project-header h1::before {
+  content: "◆";
+  color: var(--accent-teal);
+  font-size: 1.5rem;
+}
+
+/* Custom Emerald Action Button */
 #add-todo-btn {
-  padding: 0.75rem 1.5rem;
-  background: var(--accent-primary);
-  color: #fff;
-  box-shadow: var(--shadow-glow);
+  padding: 0.7rem 1.35rem;
+  background-color: var(--accent-emerald);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+  transition: var(--transition);
 }
 
 #add-todo-btn:hover {
-  background: var(--accent-primary-hover);
-  transform: translateY(-2px);
+  background-color: var(--accent-emerald-hover);
+  transform: translateY(-1px);
 }
 
 /* ==========================================================================
-   4. TODO ITEMS LIST & CARDS
+   CARDS & TASKS
    ========================================================================== */
 #todos-list {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.85rem;
 }
 
 .todo-card {
-  background: var(--bg-card);
-  backdrop-filter: blur(10px);
+  background-color: var(--bg-card);
   border: 1px solid var(--border-light);
   border-left: 5px solid var(--border-light);
-  border-radius: var(--radius-lg);
-  padding: 1.25rem 1.5rem;
+  border-radius: var(--radius-xl);
+  padding: 1.15rem 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: var(--transition-fast);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-card);
+  transition: var(--transition);
 }
 
 .todo-card:hover {
-  transform: translateY(-2px) scale(1.005);
-  box-shadow: var(--shadow-lg);
-  background: var(--bg-card-hover);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-2px);
+  border-color: var(--accent-teal);
 }
 
-/* Priority Indicators */
 .todo-card.priority-high {
   border-left-color: var(--priority-high);
 }
@@ -246,7 +252,6 @@ button {
   border-left-color: var(--priority-low);
 }
 
-/* Left Side Actions & Title */
 .todo-left {
   display: flex;
   align-items: center;
@@ -257,31 +262,35 @@ button {
   appearance: none;
   width: 20px;
   height: 20px;
-  border: 2px solid var(--text-muted);
+  border: 2px solid var(--border-light);
   border-radius: 6px;
   cursor: pointer;
   position: relative;
-  transition: var(--transition-fast);
+  transition: var(--transition);
+}
+
+.todo-left .checkbox:hover {
+  border-color: var(--accent-teal);
 }
 
 .todo-left .checkbox:checked {
-  background: var(--accent-primary);
-  border-color: var(--accent-primary);
+  background-color: var(--accent-teal);
+  border-color: var(--accent-teal);
 }
 
 .todo-left .checkbox:checked::after {
   content: "✓";
   position: absolute;
   color: white;
-  font-size: 14px;
-  top: -2px;
+  font-size: 12px;
+  top: -3px;
   left: 3px;
 }
 
 .todo-title {
-  font-size: 1.05rem;
-  font-weight: 500;
-  color: var(--text-main);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
 }
 
 .todo-card.completed .todo-title {
@@ -289,77 +298,72 @@ button {
   color: var(--text-muted);
 }
 
-/* Right Side Actions & Due Date */
 .todo-right {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .due-date {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  background: rgba(255, 255, 255, 0.05);
-  padding: 0.35rem 0.75rem;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border-light);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #d97706; /* Warm Amber text */
+  background-color: #fef3c7; /* Light Amber tint */
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-full);
+  border: 1px solid #fde68a;
 }
 
 .edit-btn,
 .delete-btn {
-  padding: 0.4rem 0.8rem;
-  font-size: 0.85rem;
-  border-radius: var(--radius-sm);
-}
-
-.edit-btn {
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--text-main);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.4rem;
+  border-radius: var(--radius-md);
+  color: var(--text-muted);
+  transition: var(--transition);
 }
 
 .edit-btn:hover {
-  background: rgba(255, 255, 255, 0.18);
-}
-
-.delete-btn {
-  background: rgba(239, 68, 68, 0.1);
-  color: var(--priority-high);
+  background-color: var(--bg-badge);
+  color: var(--text-primary);
 }
 
 .delete-btn:hover {
-  background: var(--priority-high);
-  color: white;
+  background-color: #ffe4e6;
+  color: var(--priority-high);
 }
 
 /* ==========================================================================
-   5. DIALOG / MODAL FORM
+   MODAL OVERLAY
    ========================================================================== */
 dialog {
   margin: auto;
   border: 1px solid var(--border-light);
-  border-radius: var(--radius-lg);
-  background: #1e293b;
-  color: var(--text-main);
+  border-radius: var(--radius-xl);
+  background-color: var(--bg-card);
   padding: 2rem;
   width: 100%;
-  max-width: 500px;
-  box-shadow: var(--shadow-lg);
+  max-width: 480px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
 }
 
 dialog::backdrop {
-  background: rgba(15, 23, 42, 0.75);
-  backdrop-filter: blur(8px);
+  background: rgba(15, 23, 42, 0.3);
+  backdrop-filter: blur(4px);
 }
 
 #todo-form {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 1rem;
 }
 
 #todo-form h2 {
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.35rem;
+  font-weight: 800;
 }
 
 #todo-form input,
@@ -367,40 +371,44 @@ dialog::backdrop {
 #todo-form select {
   width: 100%;
   padding: 0.75rem 1rem;
-  border-radius: var(--radius-md);
-  background: rgba(15, 23, 42, 0.6);
+  border-radius: var(--radius-lg);
+  background-color: var(--bg-app);
   border: 1px solid var(--border-light);
-  color: var(--text-main);
-  font-size: 0.95rem;
+  color: var(--text-primary);
+  font-size: 0.925rem;
   outline: none;
 }
 
 #todo-form input:focus,
 #todo-form textarea:focus,
 #todo-form select:focus {
-  border-color: var(--accent-primary);
-  box-shadow: 0 0 0 2px var(--accent-glow);
+  border-color: var(--accent-teal);
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px var(--accent-teal-soft);
 }
 
 .dialog-actions {
   display: flex;
   justify-content: flex-end;
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
 }
 
 #save-todo-btn {
-  background: var(--accent-primary);
-  color: white;
-  padding: 0.75rem 1.5rem;
+  background-color: var(--accent-teal);
+  color: #ffffff;
+  border: none;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-lg);
+  font-weight: 600;
+  cursor: pointer;
 }
 
 #close-dialog-btn {
   background: transparent;
-  color: var(--text-muted);
-  padding: 0.75rem 1.5rem;
-}
-
-#close-dialog-btn:hover {
-  color: var(--text-main);
+  border: none;
+  color: var(--text-secondary);
+  padding: 0.65rem 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
 }

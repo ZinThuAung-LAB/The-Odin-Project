@@ -173,16 +173,16 @@ export const domController = {
           : todo.dueDate || "No Date";
 
       card.innerHTML = `
-        <div class="todo-left">
-          <input type="checkbox" class="checkbox" ${todo.completed ? "checked" : ""} />
-          <span class="todo-title">${todo.title}</span>
-        </div>
-        <div class="todo-right">
-          <span class="due-date">${formattedDate}</span>
-          <button class="edit-btn">Edit/Details</button>
-          <button class="delete-btn">Delete</button>
-        </div>
-      `;
+  <div class="todo-left">
+    <input type="checkbox" class="checkbox" ${todo.completed ? "checked" : ""} />
+    <span class="todo-title">${todo.title}</span>
+  </div>
+  <div class="todo-right">
+    <span class="due-date">📅 ${formattedDate}</span>
+    <button class="edit-btn" title="Edit Task">✏️</button>
+    <button class="delete-btn" title="Delete Task">🗑️</button>
+  </div>
+`;
 
       this.todosListEl.appendChild(card);
     });

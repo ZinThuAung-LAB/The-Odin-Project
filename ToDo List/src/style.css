@@ -1,0 +1,28 @@
+.todo-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  margin-bottom: 8px;
+  border-left: 6px solid #ccc; /* Default indicator color */
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+/* Color coding by priority level */
+.todo-card.priority-high {
+  border-left-color: #e63946;
+}
+
+.todo-card.priority-medium {
+  border-left-color: #f4a261;
+}
+
+.todo-card.priority-low {
+  border-left-color: #2a9d8f;
+}
+
+.todo-card.completed .todo-title {
+  text-decoration: line-through;
+  opacity: 0.6;
+}

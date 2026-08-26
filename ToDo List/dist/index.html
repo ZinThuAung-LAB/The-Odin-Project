@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo App</title>
+  <script defer src="main.js"></script></head>
+  <body>
+    <div id="app">
+      <!-- Sidebar for Projects -->
+      <aside class="sidebar">
+        <h2>Projects</h2>
+        <ul id="projects-list"></ul>
+        <button id="add-project-btn">+ New Project</button>
+      </aside>
+
+      <!-- Main Content Area for Todos -->
+      <main class="todo-container">
+        <header class="project-header">
+          <h1 id="current-project-title">Project Name</h1>
+          <button id="add-todo-btn">+ Add Task</button>
+        </header>
+
+        <ul id="todos-list"></ul>
+      </main>
+    </div>
+
+    <!-- Modal / Dialog for Adding / Expanding / Editing Todos -->
+    <dialog id="todo-dialog">
+      <form id="todo-form">
+        <h2 id="modal-title">Add / Edit Task</h2>
+
+        <input type="text" id="todo-title-input" placeholder="Title" required />
+        <textarea id="todo-desc-input" placeholder="Description"></textarea>
+
+        <label
+          >Due Date:
+          <input type="date" id="todo-date-input" required />
+        </label>
+
+        <label
+          >Priority:
+          <select id="todo-priority-input">
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+          </select>
+        </label>
+
+        <textarea id="todo-notes-input" placeholder="Notes"></textarea>
+
+        <div class="dialog-actions">
+          <button type="submit" id="save-todo-btn">Save</button>
+          <button type="button" id="close-dialog-btn">Cancel</button>
+        </div>
+      </form>
+    </dialog>
+  </body>
+</html>

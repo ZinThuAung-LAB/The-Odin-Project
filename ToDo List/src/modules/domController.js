@@ -24,6 +24,21 @@ export const domController = {
   bindEvents() {
     // Switch or Add Projects
     this.projectsListEl.addEventListener("click", (e) => {
+      if (e.target.classList.contains("delete-project-btn")) {
+        e.stopPropagation(); // Stop click from triggering project selection
+        const projectId = e.target.dataset.projectId;
+
+        if (
+          confirm(
+            "Are you sure you want to delete this project and all its tasks?",
+          )
+        ) {
+          projectsManager.deleteProject(projectId);
+          this.render();
+        }
+        return;
+      }
+
       const projectLi = e.target.closest("li[data-project-id]");
       if (projectLi) {
         projectsManager.selectProject(projectLi.dataset.projectId);
@@ -62,9 +77,11 @@ export const domController = {
 
       if (e.target.classList.contains("delete-btn")) {
         projectsManager.removeTodoFromCurrentProject(todoId);
+        projectsManager.saveState();
         this.render();
       } else if (e.target.classList.contains("checkbox")) {
         todo.toggleComplete();
+        projectsManager.saveState();
         this.render();
       } else if (e.target.classList.contains("edit-btn")) {
         this.openEditModal(todo);
@@ -86,6 +103,7 @@ export const domController = {
           (t) => t.id === this.editingTodoId,
         );
         todo.updateDetails({ title, description, dueDate, priority, notes });
+        projectsManager.saveState();
       } else {
         projectsManager.addTodoToCurrentProject(
           title,
@@ -116,7 +134,13 @@ export const domController = {
     projectsManager.projects.forEach((proj) => {
       const li = document.createElement("li");
       li.dataset.projectId = proj.id;
-      li.textContent = proj.name;
+
+      const isDefault = proj.name.toLowerCase() === "default";
+
+      li.innerHTML = `
+      <span class="project-name">${proj.name}</span>
+      ${!isDefault ? `<button class="delete-project-btn" data-project-id="${proj.id}">✕</button>` : ""}
+    `;
 
       if (
         projectsManager.currentProject &&

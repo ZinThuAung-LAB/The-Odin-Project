@@ -131,7 +131,8 @@ export const domController = {
   renderTodos() {
     this.todosListEl.innerHTML = "";
     const activeProj = projectsManager.currentProject;
-
+    console.log("Current Active Project:", activeProj);
+    console.log("Tasks in this project:", activeProj ? activeProj.todos : []);
     if (!activeProj) return;
 
     this.currentProjectTitleEl.textContent = activeProj.name;
@@ -142,13 +143,18 @@ export const domController = {
       if (todo.completed) card.classList.add("completed");
       card.dataset.todoId = todo.id;
 
+      const formattedDate =
+        typeof todo.getFormattedDate === "function"
+          ? todo.getFormattedDate()
+          : todo.dueDate || "No Date";
+
       card.innerHTML = `
         <div class="todo-left">
           <input type="checkbox" class="checkbox" ${todo.completed ? "checked" : ""} />
           <span class="todo-title">${todo.title}</span>
         </div>
         <div class="todo-right">
-          <span class="due-date">${todo.getFormattedDate()}</span>
+          <span class="due-date">${formattedDate}</span>
           <button class="edit-btn">Edit/Details</button>
           <button class="delete-btn">Delete</button>
         </div>

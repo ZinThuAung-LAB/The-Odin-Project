@@ -1,11 +1,12 @@
 class Book {
-  constructor(title, author, pages, read = false) {
+  constructor(title, author, pages, isRead = false) {
     this.id = crypto.randomUUID();
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.isRead = read;
+    this.isRead = isRead;
   }
+
   toggleStatus() {
     this.isRead = !this.isRead;
   }
@@ -16,41 +17,7 @@ let myLibrary = [
   new Book("Harry Potter", "J.K. Rowling", 454, true),
   new Book("The Test", "Tester", 2, true),
   new Book("New Book", "Zack", 192, false),
-  new Book("Bug", "Zack", 1, true),
 ];
-
-// function Book(title, author, pages, read) {
-//   if (!new.target) {
-//     throw Error(
-//       "You must use the 'new' operator to call the constructor and This is test",
-//     );
-//   }x1
-//   this.id = crypto.randomUUID();
-//   this.title = title;
-//   this.author = author;
-//   this.pages = pages;
-//   this.isRead = read;
-
-//   this.toggleStatus = function () {
-//     this.isRead = !this.isRead;
-//   };
-// }
-
-// const theHobbit = new Book(
-//   "The Hobbit",
-//   "J.R.R Tolkein",
-//   "295 pages",
-//   "not read yet",
-// );
-
-// const theHarryPotter = new Book(
-//   "Harry Potter",
-//   "J.K.Rowling",
-//   "454 pages",
-//   "read",
-// );
-
-// const theTest = new Book("The Test", "Tester", "2 pages", "read");
 
 function addBookToLibrary(book) {
   myLibrary.push(book);
@@ -59,6 +26,7 @@ function addBookToLibrary(book) {
 function displayBookToLibrary() {
   const bookGrid = document.querySelector(".books-grid");
   bookGrid.innerHTML = "";
+
   myLibrary.forEach((book, index) => {
     const card = document.createElement("div");
     card.classList.add("card");
@@ -66,9 +34,12 @@ function displayBookToLibrary() {
     card.innerHTML = ` 
         <h3 class="title">${book.title}</h3>
         <p class="author">${book.author}</p>
-        <p class="pages">${book.pages}</p>
-        <button class="status-btn ${book.isRead ? "read" : "unread"}" onClick="toggleButton(${index})">${book.isRead ? "Read" : "Not Read Yet"}</button>
+        <p class="pages">${book.pages} pages</p>
+        <button class="status-btn ${book.isRead ? "read" : "unread"}" onClick="toggleButton(${index})">
+          ${book.isRead ? "Read" : "Not Read Yet"}
+        </button>
         <button class="delete-btn" onClick="deleteButton(${index})">Delete</button>`;
+
     bookGrid.appendChild(card);
   });
 }
@@ -85,46 +56,104 @@ function deleteButton(index) {
 
 displayBookToLibrary();
 
-// --- Modal Elements ---
+// --- Modal Elements & Input References ---
 const modalOverlay = document.getElementById("modal-overlay");
 const openModalBtn = document.getElementById("add-book-btn");
 const closeModalBtn = document.getElementById("close-modal-btn");
 const addBookForm = document.getElementById("add-book-form");
 
-// Open Modal
+const titleInput = document.getElementById("title");
+const authorInput = document.getElementById("author");
+const pagesInput = document.getElementById("pages");
+
+const formInputs = [titleInput, authorInput, pagesInput];
+
+// --- Validation Function ---
+function validateField(input) {
+  const errorSpan = input.nextElementSibling;
+  errorSpan.textContent = "";
+  input.classList.remove("invalid");
+
+  if (input.validity.valueMissing) {
+    if (input === titleInput)
+      errorSpan.textContent = "The book title must be filled!";
+    if (input === authorInput)
+      errorSpan.textContent = "The author name must be filled!";
+    if (input === pagesInput)
+      errorSpan.textContent = "The page count must be filled!";
+    input.classList.add("invalid");
+    return false;
+  }
+
+  if (
+    input === pagesInput &&
+    (input.validity.rangeUnderflow || input.value < 1)
+  ) {
+    errorSpan.textContent = "Page count must be at least 1!";
+    input.classList.add("invalid");
+    return false;
+  }
+
+  return true;
+}
+
+// Clear all error messages when resetting or closing modal
+function clearValidationErrors() {
+  formInputs.forEach((input) => {
+    const errorSpan = input.nextElementSibling;
+    errorSpan.textContent = "";
+    input.classList.remove("invalid");
+  });
+}
+
+// Attach Live Validation Listeners
+formInputs.forEach((input) => {
+  input.addEventListener("blur", () => validateField(input));
+  input.addEventListener("input", () => {
+    if (input.classList.contains("invalid")) {
+      validateField(input);
+    }
+  });
+});
+
+// Modal Actions
 openModalBtn.addEventListener("click", () => {
   modalOverlay.classList.add("active");
 });
 
-// Close Modal Function
 function closeModal() {
   modalOverlay.classList.remove("active");
-  addBookForm.reset(); // Clear inputs
+  addBookForm.reset();
+  clearValidationErrors();
 }
 
-// Close on 'X' button click
 closeModalBtn.addEventListener("click", closeModal);
 
-// Close on clicking outside the modal box
 modalOverlay.addEventListener("click", (e) => {
   if (e.target === modalOverlay) closeModal();
 });
 
-// --- Form Submission ---
+// --- Form Submission Handler ---
 addBookForm.addEventListener("submit", (e) => {
-  e.preventDefault(); // Prevent page refresh
+  e.preventDefault();
 
-  // Get form input values
-  const title = document.getElementById("title").value;
-  const author = document.getElementById("author").value;
-  const pages = document.getElementById("pages").value;
+  let isFormValid = true;
+
+  formInputs.forEach((input) => {
+    const isValid = validateField(input);
+    if (!isValid) isFormValid = false;
+  });
+
+  if (!isFormValid) return; // Prevent submission if any input is invalid
+
+  const title = titleInput.value;
+  const author = authorInput.value;
+  const pages = pagesInput.value;
   const isRead = document.getElementById("is-read").checked;
 
-  // Create new book and add to library
   const newBook = new Book(title, author, pages, isRead);
   addBookToLibrary(newBook);
 
   displayBookToLibrary();
-  // Close modal and refresh screen
   closeModal();
 });

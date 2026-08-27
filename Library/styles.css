@@ -283,3 +283,19 @@ body {
 .submit-btn:hover {
   background-color: #1d4ed8;
 }
+
+/* Styling active errors */
+.form-group input.invalid,
+.form-group input:user-invalid {
+  border: 1px solid #ef4444;
+  background-color: #fef2f2;
+}
+
+/* Custom error text message styling */
+.error-message {
+  color: #ef4444;
+  font-size: 0.8rem;
+  margin-top: 4px;
+  display: block;
+  min-height: 1.2rem;
+}

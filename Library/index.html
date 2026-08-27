@@ -17,6 +17,7 @@
       </header>
     </div>
     <div class="books-grid"></div>
+
     <!-- Modal Overlay -->
     <div class="modal-overlay" id="modal-overlay">
       <div class="modal">
@@ -25,7 +26,8 @@
           <button class="close-btn" id="close-modal-btn">&times;</button>
         </div>
 
-        <form id="add-book-form">
+        <!-- Added novalidate to bypass default browser popups -->
+        <form id="add-book-form" novalidate>
           <div class="form-group">
             <label for="title">Title</label>
             <input
@@ -34,6 +36,7 @@
               required
               placeholder="e.g. The Hobbit"
             />
+            <span class="error-message" aria-live="polite"></span>
           </div>
 
           <div class="form-group">
@@ -44,6 +47,7 @@
               required
               placeholder="e.g. J.R.R. Tolkien"
             />
+            <span class="error-message" aria-live="polite"></span>
           </div>
 
           <div class="form-group">
@@ -55,6 +59,7 @@
               required
               placeholder="e.g. 295"
             />
+            <span class="error-message" aria-live="polite"></span>
           </div>
 
           <div class="form-group checkbox-group">

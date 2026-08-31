@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Retro Rift Defense</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;800&family=Rajdhani:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body data-theme="midnight">
+    <div class="shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Arcade Command</p>
+          <h1>Retro Rift Defense</h1>
+        </div>
+        <button
+          id="themeToggle"
+          class="theme-toggle"
+          type="button"
+          aria-label="Toggle game theme"
+        >
+          Theme: Midnight
+        </button>
+      </header>
+
+      <main class="play-area">
+        <aside class="stats-panel">
+          <div class="stat-box">
+            <span>Score</span>
+            <strong id="scoreValue">0</strong>
+          </div>
+          <div class="stat-box">
+            <span>High Score</span>
+            <strong id="highScoreValue">0</strong>
+          </div>
+          <div class="stat-box">
+            <span>Lives</span>
+            <strong id="livesValue">3</strong>
+          </div>
+          <div class="stat-box">
+            <span>Wave</span>
+            <strong id="waveValue">1</strong>
+          </div>
+          <div class="stat-box timer-box">
+            <span>Timer</span>
+            <strong id="timerValue">00:00</strong>
+          </div>
+        </aside>
+
+        <section class="board-panel">
+          <div class="board-frame">
+            <canvas
+              id="gameCanvas"
+              width="900"
+              height="600"
+              aria-label="Space shooter game canvas"
+            ></canvas>
+            <div id="overlay" class="overlay visible" aria-live="polite">
+              <h2 id="overlayTitle">Ready for Launch</h2>
+              <p id="overlayMessage">
+                Press Start or Space to begin the defense.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <aside class="controls-panel">
+          <button id="startBtn" class="action-btn primary" type="button">
+            Start Game
+          </button>
+          <button id="pauseBtn" class="action-btn" type="button">Pause</button>
+          <button id="restartBtn" class="action-btn" type="button">
+            Reset
+          </button>
+
+          <div class="legend">
+            <h3>Controls</h3>
+            <ul>
+              <li>Move: A/D or ←/→</li>
+              <li>Shoot: Space / Tap</li>
+              <li>Pause: P</li>
+            </ul>
+          </div>
+
+          <div class="touch-controls" aria-label="Mobile controls">
+            <button type="button" class="touch-btn" data-key="ArrowLeft">
+              ◀
+            </button>
+            <button type="button" class="touch-btn" data-key="Space">
+              Fire
+            </button>
+            <button type="button" class="touch-btn" data-key="ArrowRight">
+              ▶
+            </button>
+          </div>
+        </aside>
+      </main>
+    </div>
+
+    <script src="game.js"></script>
+  </body>
+</html>

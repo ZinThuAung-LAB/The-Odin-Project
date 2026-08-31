@@ -1,464 +1,135 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Odin Project Portfolio | ZinThuAung-LAB</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zin Thu Aung | Portfolio & Project Showcase</title>
+  
+  <!-- Font Preconnections and Stylesheet -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Main Portfolio Scripts (deferred to load after HTML parsing) -->
+  <script src="app.js" defer></script>
+</head>
+<body>
 
-    <style>
-      :root {
-        --bg-main: #0b0f19;
-        --card-bg: #151c2c;
-        --card-border: #232d42;
-        --card-hover-border: #38bdf8;
-        --text-heading: #f8fafc;
-        --text-body: #94a3b8;
-        --accent: #38bdf8;
-        --accent-glow: rgba(56, 189, 248, 0.15);
-        --badge-bg: #1e293b;
-        --badge-text: #38bdf8;
-      }
-
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      body {
-        font-family:
-          "Inter",
-          system-ui,
-          -apple-system,
-          sans-serif;
-        background-color: var(--bg-main);
-        color: var(--text-body);
-        min-height: 100vh;
-        padding: 3rem 1.5rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        line-height: 1.5;
-      }
-
-      /* Background Accent Glow */
-      body::before {
-        content: "";
-        position: fixed;
-        top: -10%;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 600px;
-        height: 400px;
-        background: radial-gradient(
-          circle,
-          rgba(56, 189, 248, 0.08) 0%,
-          rgba(0, 0, 0, 0) 70%
-        );
-        pointer-events: none;
-        z-index: 0;
-      }
-
-      header {
-        text-align: center;
-        max-width: 700px;
-        margin-bottom: 3.5rem;
-        position: relative;
-        z-index: 1;
-      }
-
-      header h1 {
-        font-size: 2.75rem;
-        font-weight: 800;
-        color: var(--text-heading);
-        letter-spacing: -0.025em;
-        margin-bottom: 0.75rem;
-      }
-
-      header h1 span {
-        color: var(--accent);
-        background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-
-      header p {
-        font-size: 1.1rem;
-        color: var(--text-body);
-      }
-
-      /* Project Grid */
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-        gap: 1.75rem;
-        width: 100%;
-        max-width: 1200px;
-        position: relative;
-        z-index: 1;
-      }
-
-      .card {
-        background-color: var(--card-bg);
-        border: 1px solid var(--card-border);
-        border-radius: 16px;
-        padding: 1.75rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        transition: all 0.25s ease-in-out;
-        box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.3);
-      }
-
-      .card:hover {
-        transform: translateY(-5px);
-        border-color: var(--card-hover-border);
-        box-shadow: 0 12px 30px -4px var(--accent-glow);
-      }
-
-      .card-content h2 {
-        font-size: 1.35rem;
-        font-weight: 700;
-        color: var(--text-heading);
-        margin-bottom: 0.75rem;
-      }
-
-      .card-content p {
-        font-size: 0.95rem;
-        color: var(--text-body);
-        margin-bottom: 1.25rem;
-      }
-
-      /* Tech Stack Badges */
-      .tech-stack {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 1.5rem;
-      }
-
-      .tech-tag {
-        font-size: 0.75rem;
-        font-weight: 600;
-        background-color: var(--badge-bg);
-        color: var(--badge-text);
-        padding: 0.25rem 0.65rem;
-        border-radius: 6px;
-        border: 1px solid rgba(56, 189, 248, 0.1);
-      }
-
-      /* Live Preview Button */
-      .btn-preview {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        width: 100%;
-        padding: 0.75rem 1rem;
-        font-size: 0.9rem;
-        font-weight: 600;
-        color: var(--text-heading);
-        background-color: rgba(255, 255, 255, 0.04);
-        border: 1px solid var(--card-border);
-        border-radius: 10px;
-        text-decoration: none;
-        transition: all 0.2s ease;
-      }
-
-      .btn-preview:hover {
-        background-color: var(--accent);
-        color: #0b0f19;
-        border-color: var(--accent);
-      }
-
-      .btn-preview svg {
-        width: 16px;
-        height: 16px;
-        fill: currentColor;
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <h1>The Odin Project <span>Showcase</span></h1>
-      <p>
-        A collection of front-end projects demonstrating DOM manipulation,
-        modular JS architecture, and modern layout techniques.
-      </p>
+  <div class="container">
+    
+    <!-- 1. Header & Personal Branding -->
+    <header class="portfolio-header">
+      <div class="avatar-wrapper">
+        <div class="avatar-glow"></div>
+        <img class="avatar-img" src="https://github.com/ZinThuAung-LAB.png" alt="Zin Thu Aung Profile Picture">
+      </div>
+      
+      <div class="profile-info">
+        <h1>Zin Thu Aung</h1>
+        <div class="title">Frontend Engineer & UI/UX Developer</div>
+        <p class="bio">
+          A showcase of interactive web applications, tools, and responsive layouts built during my path through The Odin Project curriculum. Focusing on modular ES6+ JavaScript, CSS grid architectures, and clean semantic structures.
+        </p>
+      </div>
+      
+      <!-- Social Media & Profile Links -->
+      <div class="social-links">
+        <a href="https://github.com/ZinThuAung-LAB" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+          </svg>
+        </a>
+        <a href="mailto:zinthuaung.lab@gmail.com" class="social-btn" aria-label="Send Email">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+            <polyline points="22,6 12,13 2,6"></polyline>
+          </svg>
+        </a>
+        <a href="https://www.theodinproject.com" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="The Odin Project">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+          </svg>
+        </a>
+      </div>
     </header>
-
-    <main class="grid">
-      <!-- 1. Restaurant Page -->
-      <article class="card">
-        <div class="card-content">
-          <h2>Restaurant Page</h2>
-          <p>
-            A modern, single-page restaurant website featuring dynamic tabbed
-            DOM navigation, scoped component styling, and clean module bundling
-            via Webpack 5.
-          </p>
-          <div class="tech-stack">
-            <span class="tech-tag">HTML5</span>
-            <span class="tech-tag">CSS3</span>
-            <span class="tech-tag">JS (ES6 Modules)</span>
-            <span class="tech-tag">Webpack 5</span>
-          </div>
-        </div>
-        <a
-          href="./Restaurant Page/index.html"
-          class="btn-preview"
-          target="_blank"
-        >
-          Live Preview
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-            <path
-              d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"
-            />
-            <path
-              d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"
-            />
+    
+    <!-- 2. Dynamic Statistics Bar -->
+    <section class="stats-bar" aria-label="Portfolio Statistics">
+      <!-- Total Projects Card -->
+      <div class="stat-card">
+        <div class="stat-icon-box">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
           </svg>
-        </a>
-      </article>
-
-      <!-- 2. Tic-Tac-Toe -->
-      <article class="card">
-        <div class="card-content">
-          <h2>Tic-Tac-Toe</h2>
-          <p>
-            An interactive Tic-Tac-Toe game built with modular JavaScript
-            architecture, object encapsulation, state management, and real-time
-            UI turn/win status tracking.
-          </p>
-          <div class="tech-stack">
-            <span class="tech-tag">HTML5</span>
-            <span class="tech-tag">CSS3 (Grid)</span>
-            <span class="tech-tag">JS (Modules & Factory Functions)</span>
-          </div>
         </div>
-        <a href="./TicTacToe/index.html" class="btn-preview" target="_blank">
-          Live Preview
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-            <path
-              d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"
-            />
-            <path
-              d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"
-            />
-          </svg>
-        </a>
-      </article>
-
-      <!-- 3. Library -->
-      <article class="card">
-        <div class="card-content">
-          <h2>Library</h2>
-          <p>
-            An interactive web application for managing your personal book
-            collection featuring OOP constructors, dynamic card rendering,
-            status toggling, and a modal popup interface.
-          </p>
-          <div class="tech-stack">
-            <span class="tech-tag">HTML5</span>
-            <span class="tech-tag">CSS3 (Grid & Flexbox)</span>
-            <span class="tech-tag">JS (OOP & DOM)</span>
-          </div>
+        <div class="stat-details">
+          <span class="stat-value" id="stat-total-projects">-</span>
+          <span class="stat-label">Total Projects</span>
         </div>
-        <a href="./Library/index.html" class="btn-preview" target="_blank">
-          Live Preview
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-            <path
-              d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"
-            />
-            <path
-              d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"
-            />
+      </div>
+      
+      <!-- Tech Tools Card -->
+      <div class="stat-card">
+        <div class="stat-icon-box">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
           </svg>
-        </a>
-      </article>
-
-      <!-- 4. Admin Dashboard -->
-      <article class="card">
-        <div class="card-content">
-          <h2>Admin Dashboard</h2>
-          <p>
-            A full-featured admin dashboard layout featuring a sidebar
-            navigation, dynamic top header controls, a project grid card
-            section, and sidebar widgets.
-          </p>
-          <div class="tech-stack">
-            <span class="tech-tag">HTML5</span>
-            <span class="tech-tag">CSS3 (Grid & Flexbox)</span>
-          </div>
         </div>
-        <a
-          href="./Admin Dashboard/index.html"
-          class="btn-preview"
-          target="_blank"
-        >
-          Live Preview
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-            <path
-              d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"
-            />
-            <path
-              d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"
-            />
-          </svg>
-        </a>
-      </article>
-
-      <!-- 5. Sign-up Form -->
-      <article class="card">
-        <div class="card-content">
-          <h2>Sign-up Form</h2>
-          <p>
-            A modern, responsive sign-up form featuring a two-column desktop
-            layout, custom form inputs, floating branding banner, and active
-            focus/error styling.
-          </p>
-          <div class="tech-stack">
-            <span class="tech-tag">HTML5</span>
-            <span class="tech-tag">CSS3 (Flexbox)</span>
-            <span class="tech-tag">JS</span>
-          </div>
+        <div class="stat-details">
+          <span class="stat-value" id="stat-total-tech">-</span>
+          <span class="stat-label">Tech Tools Used</span>
         </div>
-        <a href="./Sign-Up-Form/index.html" class="btn-preview" target="_blank">
-          Live Preview
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-            <path
-              d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"
-            />
-            <path
-              d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"
-            />
+      </div>
+      
+      <!-- JS Applications Card -->
+      <div class="stat-card">
+        <div class="stat-icon-box">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
           </svg>
-        </a>
-      </article>
-
-      <!-- 6. Calculator -->
-      <article class="card">
-        <div class="card-content">
-          <h2>Calculator</h2>
-          <p>
-            A sleek, dark-mode web calculator featuring robust mathematical
-            state management, custom scrollable display handling, and automatic
-            scientific notation for extreme numbers.
-          </p>
-          <div class="tech-stack">
-            <span class="tech-tag">HTML5</span>
-            <span class="tech-tag">CSS3 (Grid)</span>
-            <span class="tech-tag">JS (ES6+)</span>
-          </div>
         </div>
-        <a href="./Calculator/index.html" class="btn-preview" target="_blank">
-          Live Preview
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-            <path
-              d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"
-            />
-            <path
-              d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"
-            />
-          </svg>
-        </a>
-      </article>
-
-      <!-- 7. Etch-a-Sketch -->
-      <article class="card">
-        <div class="card-content">
-          <h2>Etch-a-Sketch</h2>
-          <p>
-            An interactive pixel-drawing grid application supporting dynamic
-            grid sizing, progressive shading (opacity darkening), and custom
-            color effects.
-          </p>
-          <div class="tech-stack">
-            <span class="tech-tag">HTML5</span>
-            <span class="tech-tag">CSS3 (Grid)</span>
-            <span class="tech-tag">JS (DOM)</span>
-          </div>
+        <div class="stat-details">
+          <span class="stat-value" id="stat-js-projects">-</span>
+          <span class="stat-label">JS-Powered Apps</span>
         </div>
-        <a
-          href="./Etch-a-Sketch/index.html"
-          class="btn-preview"
-          target="_blank"
-        >
-          Live Preview
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-            <path
-              d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"
-            />
-            <path
-              d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"
-            />
-          </svg>
-        </a>
-      </article>
-
-      <!-- 8. Rock-Paper-Scissors -->
-      <article class="card">
-        <div class="card-content">
-          <h2>Rock-Paper-Scissors</h2>
-          <p>
-            Classic Rock-Paper-Scissors game featuring an interactive graphical
-            user interface, score tracking, and real-time round outcome
-            displays.
-          </p>
-          <div class="tech-stack">
-            <span class="tech-tag">HTML5</span>
-            <span class="tech-tag">CSS3</span>
-            <span class="tech-tag">JS (ES6+)</span>
-          </div>
+      </div>
+    </section>
+    
+    <!-- 3. Search & Filters Bar -->
+    <section class="search-filter-section" aria-label="Search and Filter Controls">
+      <!-- Search Input -->
+      <div class="search-wrapper">
+        <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="text" id="search-input" class="search-input" placeholder="Search projects by title, description, or tech stack...">
+      </div>
+      
+      <!-- Tech Category Filters -->
+      <div class="filter-container">
+        <span class="filter-label">Filter Tech:</span>
+        <div id="tech-filters" class="tech-filters">
+          <!-- Dynamically populated by app.js -->
         </div>
-        <a
-          href="./Rock-Paper-Scissor/index.html"
-          class="btn-preview"
-          target="_blank"
-        >
-          Live Preview
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-            <path
-              d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"
-            />
-            <path
-              d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"
-            />
-          </svg>
-        </a>
-      </article>
-
-      <!-- 9. Odin Recipes -->
-      <article class="card">
-        <div class="card-content">
-          <h2>Odin Recipes</h2>
-          <p>
-            A clean, multi-page HTML recipe website focusing on structured
-            semantic elements, internal linking, and styled layout.
-          </p>
-          <div class="tech-stack">
-            <span class="tech-tag">HTML5</span>
-            <span class="tech-tag">CSS3</span>
-          </div>
-        </div>
-        <a href="./odin-recipes/index.html" class="btn-preview" target="_blank">
-          Live Preview
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-            <path
-              d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"
-            />
-            <path
-              d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"
-            />
-          </svg>
-        </a>
-      </article>
+      </div>
+    </section>
+    
+    <!-- 4. Projects Showcase Grid -->
+    <main class="projects-grid" id="projects-grid">
+      <!-- Project cards will be dynamically rendered here by app.js -->
     </main>
-  </body>
+    
+    <!-- 5. Footer -->
+    <footer class="portfolio-footer">
+      <p>&copy; 2026 Zin Thu Aung (ZinThuAung-LAB). All rights reserved.</p>
+      <p>Built as part of <a href="https://www.theodinproject.com" target="_blank" rel="noopener noreferrer">The Odin Project</a> curriculum.</p>
+    </footer>
+
+  </div>
+
+</body>
 </html>

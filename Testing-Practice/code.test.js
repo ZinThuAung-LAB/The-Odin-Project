@@ -50,4 +50,20 @@ describe("caesarCipher", () => {
   test("shift basic lowercase characters", () => {
     expect(caesarCipher("abc", 3)).toBe("def");
   });
+
+  test("wraps from z to a", () => {
+    expect(caesarCipher("xyz", 3)).toBe("abc");
+  });
+
+  test("preserves lettercase", () => {
+    expect(caesarCipher("HeLLo", 3)).toBe("KhOOr");
+  });
+
+  test("leaves punctuation, spaces, and numbers unchanged", () => {
+    expect(caesarCipher("Hello, World!", 3)).toBe("Khoor, Zruog!");
+  });
+
+  test("handles large shift factors", () => {
+    expect(caesarCipher("abc", 29)).toBe("def"); // 29 % 26 = 3
+  });
 });

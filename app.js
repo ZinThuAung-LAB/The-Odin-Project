@@ -6,13 +6,18 @@
 // 1. Projects Data Structure
 const projects = [
   {
-    title: "Study Aid & Flashcards",
+    title: "Flashcard-App",
     description:
-      "A custom study app featuring project/deck categorization, interactive card flipping, mastery status tracking, and re-hydrated object state saved via LocalStorage.",
-    techStack: ["HTML5", "CSS3", "JS (ES6 Modules)", "OOP"],
-    liveUrl: "https://zinthuaung-lab.github.io/The-Odin-Project/Study-App/",
-    githubUrl:
-      "https://github.com/ZinThuAung-LAB/The-Odin-Project/tree/main/Study-App",
+      "A custom study app featuring project/deck categorization, interactive 3D card flipping, mastery status tracking, and re-hydrated object state saved via LocalStorage.",
+    tech: ["HTML5", "CSS3", "JS (ES6 Modules)", "OOP", "Local Storage"],
+    liveUrl: "./Flashcard-App/index.html",
+    codeUrl:
+      "https://github.com/ZinThuAung-LAB/The-Odin-Project/tree/main/Flashcard-App",
+    highlights: [
+      "Re-hydrated raw JSON payloads into functional Project & Flashcard OOP class instances",
+      "Decoupled state management using a central StudyApp controller",
+      "Created interactive 3D flip card animations with custom CSS transforms",
+    ],
   },
   {
     title: "ToDo List",
@@ -203,7 +208,7 @@ function calculateStats() {
     totalTechCountEl.textContent = allTech.length;
   }
 
-  // Count JS-based projects (any tag containing JS or Webpack or OOP)
+  // Count JS-based projects (any tag containing JS or Webpack or OOP or Storage)
   const jsCount = projects.filter((p) =>
     p.tech.some((t) => {
       const lower = t.toLowerCase();
@@ -211,7 +216,8 @@ function calculateStats() {
         lower.includes("js") ||
         lower.includes("javascript") ||
         lower.includes("webpack") ||
-        lower.includes("storage")
+        lower.includes("storage") ||
+        lower.includes("oop")
       );
     }),
   ).length;
@@ -229,6 +235,7 @@ function normalizeTechTag(tag) {
   if (t.includes("js") || t.includes("javascript")) return "JavaScript";
   if (t.includes("webpack")) return "Webpack";
   if (t.includes("storage")) return "Local Storage";
+  if (t.includes("oop")) return "OOP";
   return tag;
 }
 
@@ -236,9 +243,7 @@ function normalizeTechTag(tag) {
 function renderFilterButtons() {
   if (!techFilters) return;
 
-  // Gather unique tags (custom short list: HTML5, CSS3, JavaScript, Webpack, All)
-  // To keep filters tidy, let's use the main technologies
-  const categories = ["All", "JavaScript", "HTML5", "CSS3", "Webpack"];
+  const categories = ["All", "JavaScript", "HTML5", "CSS3", "Webpack", "OOP"];
 
   techFilters.innerHTML = categories
     .map((cat) => {
@@ -251,7 +256,6 @@ function renderFilterButtons() {
   const buttons = techFilters.querySelectorAll(".filter-btn");
   buttons.forEach((btn) => {
     btn.addEventListener("click", (e) => {
-      // Toggle active states
       buttons.forEach((b) => b.classList.remove("active"));
       e.target.classList.add("active");
 
@@ -273,13 +277,11 @@ function renderProjects() {
 
   // Filter projects based on state
   const filteredProjects = projects.filter((project) => {
-    // 1. Text Search matches Title, Description, or Tech Stack
     const matchesSearch =
       project.title.toLowerCase().includes(searchQuery) ||
       project.description.toLowerCase().includes(searchQuery) ||
       project.tech.some((t) => t.toLowerCase().includes(searchQuery));
 
-    // 2. Tag Filter matches
     let matchesTag = false;
     if (currentFilter === "All") {
       matchesTag = true;
@@ -287,7 +289,6 @@ function renderProjects() {
       matchesTag = project.tech.some((t) => {
         const tagLower = t.toLowerCase();
         const filterLower = currentFilter.toLowerCase();
-        // Custom matching e.g. "JavaScript" fits "JS (ES6)" or "JS"
         if (filterLower === "javascript") {
           return tagLower.includes("js") || tagLower.includes("javascript");
         }
@@ -315,12 +316,10 @@ function renderProjects() {
 
   projectGrid.innerHTML = filteredProjects
     .map((project) => {
-      // Generate tech badges
       const techBadges = project.tech
         .map((t) => `<span class="tech-tag">${t}</span>`)
         .join("");
 
-      // Generate features list ("Plus One" feature highlights)
       const highlightItems = project.highlights
         .map((hl) => `<li>${hl}</li>`)
         .join("");

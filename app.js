@@ -6,6 +6,15 @@
 // 1. Projects Data Structure
 const projects = [
   {
+    title: "Study Aid & Flashcards",
+    description:
+      "A custom study app featuring project/deck categorization, interactive card flipping, mastery status tracking, and re-hydrated object state saved via LocalStorage.",
+    techStack: ["HTML5", "CSS3", "JS (ES6 Modules)", "OOP"],
+    liveUrl: "https://zinthuaung-lab.github.io/The-Odin-Project/Study-App/",
+    githubUrl:
+      "https://github.com/ZinThuAung-LAB/The-Odin-Project/tree/main/Study-App",
+  },
+  {
     title: "ToDo List",
     description:
       "A comprehensive project planner and task manager featuring task creation, priority leveling, custom list grouping, and data persistence.",

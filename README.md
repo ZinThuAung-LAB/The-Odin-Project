@@ -8,7 +8,6 @@ Welcome to my repository featuring projects completed as part of **[The Odin Pro
 
 | Project                 | Description                                                                                                                                                                   | Tech Stack                                           | Live Demo                                                                             |
 | :---------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------- | :------------------------------------------------------------------------------------ |
-| **Flashcard App**       | A custom study app featuring project/deck categorization, interactive card flipping, mastery status tracking, and re-hydrated object state saved via LocalStorage.            | HTML5, CSS3, JS (ES6 Modules, OOP)                   | [Live Preview](https://zinthuaung-lab.github.io/The-Odin-Project/Flashcard-App/)      |
 | **Todo List**           | A modern task management application featuring dynamic project separation, priority level tags, custom teal/emerald color themes, modal forms, and complete CRUD state logic. | HTML5, CSS3, JS (ES6 Modules)                        | [Live Preview](https://zinthuaung-lab.github.io/The-Odin-Project/ToDo%20List/)        |
 | **Restaurant Page**     | A modern, single-page restaurant website featuring dynamic tabbed DOM navigation, scoped component styling, and clean module bundling via Webpack 5.                          | HTML5, CSS3, JS (ES6 Modules), Webpack 5             | [Live Preview](https://zinthuaung-lab.github.io/The-Odin-Project/Restaurant%20Page/)  |
 | **Tic-Tac-Toe**         | An interactive Tic-Tac-Toe game built with modular JavaScript architecture, object encapsulation, state management, and real-time UI turn/win status tracking.                | HTML5, CSS3 (Grid), JS (Modules & Factory Functions) | [Live Preview](https://zinthuaung-lab.github.io/The-Odin-Project/TicTacToe/)          |
@@ -23,12 +22,6 @@ Welcome to my repository featuring projects completed as part of **[The Odin Pro
 ---
 
 ## 🛠️ Key Features & Concepts Learned
-
-### 🧠 Study Aid & Flashcards
-
-- **Object Re-hydration & Class Persistence:** Solved `localStorage` serialization limitations by reconstructing raw JSON payloads back into functional `Project` and `Flashcard` OOP class instances upon application boot.
-- **Decoupled State Management:** Built an independent `StudyApp` state controller to isolate active project selection, card updates, and data persistence away from UI DOM rendering.
-- **Interactive UI & Memory Logic:** Engineered interactive 3D card-flip animations, mastery status toggling, and instant modal card creation tailored for daily micro-learning sessions.
 
 ### 📝 Todo List
 

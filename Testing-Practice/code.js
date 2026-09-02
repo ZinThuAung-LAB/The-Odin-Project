@@ -36,3 +36,14 @@ function shiftChar(char, shift) {
 
   return char;
 }
+
+export function analyzeArray(arr) {
+  if (!arr || arr.length === 0) return null;
+
+  const sum = arr.reduce((acc, current) => acc + current, 0);
+  const max = Math.max(...arr);
+  const min = Math.min(...arr);
+  const average = sum / arr.length;
+
+  return { average, max, min, length: arr.length };
+}

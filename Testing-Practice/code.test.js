@@ -1,4 +1,10 @@
-import { capitalize, reverseString, calculator, caesarCipher } from "./code.js";
+import {
+  capitalize,
+  reverseString,
+  calculator,
+  caesarCipher,
+  analyzeArray,
+} from "./code.js";
 
 describe("capitalize", () => {
   test("capitalize the first character of a string", () => {
@@ -65,5 +71,27 @@ describe("caesarCipher", () => {
 
   test("handles large shift factors", () => {
     expect(caesarCipher("abc", 29)).toBe("def"); // 29 % 26 = 3
+  });
+});
+
+describe("analyzeArray", () => {
+  test("return correct analysis object for array of numbers", () => {
+    const result = analyzeArray([1, 8, 3, 4, 2, 6]);
+    expect(result).toEqual({
+      average: 4,
+      length: 6,
+      min: 1,
+      max: 8,
+    });
+  });
+
+  test("handle array with a single element", () => {
+    const result = analyzeArray([5]);
+    expect(result).toEqual({
+      average: 5,
+      length: 1,
+      min: 5,
+      max: 5,
+    });
   });
 });

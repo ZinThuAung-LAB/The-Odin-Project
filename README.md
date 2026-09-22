@@ -1,6 +1,8 @@
 # The Odin Project - Foundations & Intermediate Projects
 
-Welcome to my repository featuring projects completed as part of **[The Odin Project](https://www.theodinproject.com/)** curriculum. This repository demonstrates my progress in DOM manipulation, JavaScript logic, ES6 Modules, Webpack bundling, CSS layouts (Flexbox & Grid), and responsive UI designs.
+Welcome to my repository featuring projects completed as part of **[The Odin Project](https://www.theodinproject.com/)** curriculum. You can view the live portfolio deployment hosting all these projects here: **[Live Portfolio Hub](https://zinthuaung-lab.github.io/The-Odin-Project/)**.
+
+This repository demonstrates my progress in DOM manipulation, JavaScript logic, ES6 Modules, Webpack bundling, CSS layouts (Flexbox & Grid), and responsive UI designs.
 
 ---
 
@@ -8,6 +10,7 @@ Welcome to my repository featuring projects completed as part of **[The Odin Pro
 
 | Project                 | Description                                                                                                                                                                   | Tech Stack                                           | Live Demo                                                                             |
 | :---------------------- | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------------------- | :------------------------------------------------------------------------------------ |
+| **Portfolio Showcase**  | A dynamic central repository showcase featuring project search, technology filtering, interactive statistics, and a responsive grid layout.                                   | HTML5, CSS3, JS (ES6+)                               | [Live Preview](https://zinthuaung-lab.github.io/The-Odin-Project/Portfolio/)          |
 | **Flashcard-App**       | A custom study app featuring project/deck categorization, interactive card flipping, mastery status tracking, and re-hydrated object state saved via LocalStorage.            | HTML5, CSS3, JS (ES6 Modules, OOP)                   | [Live Preview](https://zinthuaung-lab.github.io/The-Odin-Project/Flashcard-App/)      |
 | **Todo List**           | A modern task management application featuring dynamic project separation, priority level tags, custom teal/emerald color themes, modal forms, and complete CRUD state logic. | HTML5, CSS3, JS (ES6 Modules)                        | [Live Preview](https://zinthuaung-lab.github.io/The-Odin-Project/ToDo%20List/)        |
 | **Restaurant Page**     | A modern, single-page restaurant website featuring dynamic tabbed DOM navigation, scoped component styling, and clean module bundling via Webpack 5.                          | HTML5, CSS3, JS (ES6 Modules), Webpack 5             | [Live Preview](https://zinthuaung-lab.github.io/The-Odin-Project/Restaurant%20Page/)  |
@@ -23,6 +26,12 @@ Welcome to my repository featuring projects completed as part of **[The Odin Pro
 ---
 
 ## 🛠️ Key Features & Concepts Learned
+
+### 🌐 Portfolio Showcase
+
+- **Real-Time Search & Tag Filtering:** Engineered instant client-side filtering matching search queries across project titles, descriptions, and technology tags, with interactive tag button states.
+- **Dynamic Statistics Computation:** Automatically computes total project counts, unique technology tools used, and JavaScript-focused application metrics on runtime initialization.
+- **Responsive Layout & Cards:** Designed a flexible, modern UI grid with custom badges, hover transitions, and clean source code links.
 
 ### 🧠 Study Aid & Flashcards
 

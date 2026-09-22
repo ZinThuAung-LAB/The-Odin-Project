@@ -4,7 +4,22 @@
  */
 
 // 1. Projects Data Structure
+// 1. Projects Data Structure
 const projects = [
+  {
+    title: "Portfolio Showcase",
+    description:
+      "A dynamic central repository showcase featuring project search, technology filtering, interactive statistics, and a responsive grid layout.",
+    tech: ["HTML5", "CSS3", "JS (ES6+)"],
+    liveUrl: "./Portfolio/index.html",
+    codeUrl:
+      "https://github.com/ZinThuAung-LAB/The-Odin-Project/tree/main/Portfolio",
+    highlights: [
+      "Engineered real-time project filtering and search queries matching title, tech stack, and descriptions",
+      "Calculated dynamic statistics tracking project counts and total tech tools used",
+      "Designed a fully responsive modern layout with sleek UI components and cards",
+    ],
+  },
   {
     title: "Flashcard-App",
     description:

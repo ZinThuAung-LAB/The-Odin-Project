@@ -1,5 +1,5 @@
 import "./style.css";
-import { projects } from "./projectsData";
+import { projects } from "./js/projectsData";
 
 function renderProjects() {
   const container = document.getElementById("projects-container");
